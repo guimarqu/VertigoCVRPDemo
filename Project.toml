@@ -1,0 +1,15 @@
+[deps]
+HiGHS = "87dc4568-4c63-4d18-b0c0-bb2238e4078b"
+JuMP = "4076af6c-e467-56ae-b986-b466b2749572"
+MathOptInterface = "b8f27783-ece8-5eb3-8dc8-9495eed66fee"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+Vertigo = "e0077815-f5e2-4e39-962d-fa928ae7c9d1"
+
+[sources]
+Vertigo = {path = "../Vertigo"}
+
+[compat]
+# HiGHS.jl 1.27.0 (HiGHS_jll 1.16.0) reports a wrong MIP objective value on the
+# restricted master, which Vertigo takes as the incumbent value; 1.24.1 is fine.
+HiGHS = "~1.24.1"
+julia = "1.11"

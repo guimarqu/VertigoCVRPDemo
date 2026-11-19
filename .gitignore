@@ -1,0 +1,4 @@
+Manifest.toml
+deps/bucket-graph-spprc/
+deps/build/
+*.log
