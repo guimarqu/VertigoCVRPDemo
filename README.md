@@ -81,7 +81,7 @@ julia --project=. tools/reference.jl instances/A-n32-k5.vrp 12 2   # LP 410.5, I
 | `set_route_bounds!` overwrites the convexity bounds after the decomposition | Vertigo fixes every subproblem to exactly one column | Vertigo.jl#84 |
 | The pricer returns the route value without `fk` and the convexity duals as its dual bound | Vertigo adds them itself; the reduced cost there gives an invalid bound and wrong optima | Vertigo.jl#104 |
 | `merge_edge_variables!` writes into Vertigo's variable mapping | Vertigo has no API to map several subproblem variables to one original variable | Vertigo.jl#105 |
-| HiGHS is pinned to 1.24 | With HiGHS.jl 1.27.0 (HiGHS_jll 1.16.0), the restricted-master MIP reports a wrong objective value. Vertigo takes it as the incumbent value and closes the tree on a false optimum. | — |
+| HiGHS is pinned to 1.24 | With HiGHS.jl 1.27.0 (HiGHS_jll 1.16.0), the restricted-master MIP reports a wrong objective value. Vertigo takes it as the incumbent value and closes the tree on a false optimum. | #1, ERGO-Code/HiGHS#3642 |
 | Decomposing large instances is slow | AffExpr terms are splatted in the DML | Vertigo.jl#99 |
 | Only robust cuts | Vertigo cannot express cuts whose coefficient depends on the whole route (rank-1, strong k-path, route-load knapsack) | — |
 | `capi/bgspprc_c.cpp` is our own C shim | bucket-graph-spprc has no C API upstream | — |
