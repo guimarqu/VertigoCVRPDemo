@@ -121,10 +121,10 @@ function CG.optimize_pricing_problem!(
     # Only the exact stage proves optimality: with no route below θ, θ is a valid lower bound
     # and otherwise the best route is the optimum. A heuristic stage gives columns, no bound.
     best = isempty(paths) ? θ : minimum(path -> path.reduced_cost, paths)
-    sp_obj = best
-    # Vertigo adds fk and the convexity duals itself: the bound is the route's value without
-    # them (Vertigo.jl#104).
-    sp_bound = exact ? best - fk + ν : -Inf
+    # Vertigo adds fk and the convexity duals itself: both bounds are the route's value
+    # without them (Vertigo.jl#104).
+    sp_obj = best - fk + ν
+    sp_bound = exact ? sp_obj : -Inf
     columns = CG.PricingPrimalSolution[]
     for path in paths
         counts = Dict{MOI.VariableIndex,Float64}()
